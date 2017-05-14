@@ -1,42 +1,42 @@
 {
-  "name": "hunspell-spellchecker",
-  "displayName": "Spellchecker for source code and text",
-  "description": "Offline Spellchecker",
-  "version": "0.0.1",
-  "author": "Denis Gerguri",
-  "licence": "MIT",
-  "icon": "images/spellchecker.png",
-  "publisher": "denisgerguri",
-  "engines": {
-    "vscode": "^1.5.0"
-  },
-  "categories": [
-    "Other",
-    "Linters"
-  ],
-  "activationEvents": [
-    "*"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/neutronka/hunspell-spellchecker"
-  },
-  "homepage": "https://github.com/neutronka/hunspell-spellchecker/blob/master/README.md",
-  "main": "./extension",
-  "scripts": {
-    "postinstall": "node ./node_modules/vscode/bin/install"
-  },
-  "devDependencies": {
-    "@types/mocha": "^2.2.32",
-    "@types/node": "^6.0.40",
-    "eslint": "^3.6.0",
-    "mocha": "^2.3.3",
-    "typescript": "^2.0.3",
-    "vscode": "^1.12.1"
+    "name": "hunspell-spellchecker",
+    "displayName": "Spellchecker for source code and text",
+    "description": "Offline Spellchecker",
+    "version": "0.1.1",
+    "author": "Denis Gerguri",
+    "licence": "MIT",
+    "icon": "images/spellchecker.png",
+    "publisher": "denisgerguri",
+    "engines": {
+        "vscode": "^1.5.0"
     },
-  "dependencies": {
-    "nodehun": "2.0.11",
-    "xregexp": "^3.2.0",
-    "electron-rebuild": "^1.5.11"
-  }
+    "categories": [
+        "Other",
+        "Linters"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/neutronka/hunspell-spellchecker"
+    },
+    "homepage": "https://github.com/neutronka/hunspell-spellchecker/blob/master/README.md",
+    "main": "./extension",
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "@types/mocha": "^2.2.32",
+        "@types/node": "^6.0.40",
+        "eslint": "^3.6.0",
+        "mocha": "^2.3.3",
+        "typescript": "^2.0.3",
+        "vscode": "^1.12.1"
+    },
+    "dependencies": {
+        "nodehun": "2.0.11",
+        "xregexp": "^3.2.0",
+        "electron-rebuild": "^1.5.11"
+    }
 }
