@@ -8,36 +8,36 @@ It checks WORD by WORD and ignores all symbols and punctuation.
 Simple on/off switch 
 
 #### Example
-![Example](https://raw.githubusercontent.com/neutronka/spellchecker/master/images/switch.gif)
+![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/master/images/switch.gif)
 
 Simple suggestions
 
 #### Example
-![Example](https://raw.githubusercontent.com/neutronka/spellchecker/master/images/suggestions.gif)
+![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/master/images/suggestions.gif)
 
 
 Multi-Language Support
 
 #### Example
-![Example](https://raw.githubusercontent.com/neutronka/spellchecker/master/images/multilangsupport.gif)
+![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/master/images/multilangsupport.gif)
 
 
 Camel-case Support => "smallRectangle" is treated as "small Rectangle"
 
 #### Example
-![Example](https://raw.githubusercontent.com/neutronka/spellchecker/master/images/camelcase.gif)
+![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/master/images/camelcase.gif)
 
 
 Adding word to Language Mode (typescript,javascript,c++,...) so language specified keywords are not marked as wrong spelled words 
 
 #### Example
-![Example](https://raw.githubusercontent.com/neutronka/spellchecker/master/images/addwordlang.gif)
+![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/master/images/addwordlang.gif)
 
 
 Adding word to current dictionary
 
 #### Example
-![Example](https://raw.githubusercontent.com/neutronka/spellchecker/master/images/addworddictionary.gif)
+![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/master/images/addworddictionary.gif)
 
 
 ## Supported Languages
@@ -74,19 +74,6 @@ C:\Users\<YOURNAME>\.vscode\extensions\denisgerguri.hunspell-spellchecker\settin
 
 If there is no document created for type that you need just open a new document of that type in VS Code and it is going to be automatically created.
 All you have to do is write all the words that you want to ignore in here. One word per line.
-
-
-
-
-C:\Users\<YOURNAME>\.vscode\extensions\denisgerguri.hunspell-spellchecker\languages\
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
 
 
 ## Release Notes
