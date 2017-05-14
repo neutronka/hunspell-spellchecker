@@ -59,7 +59,8 @@ function activate(context) {
         // this function is called whenever user click onto text that have diagnostic collection 
         provideCodeActions: function (document, range, context, token) {
             let word = document.getText(range);
-            console.log(JSON.stringify(str));
+            console.log(JSON.stringify(word));
+            console.log(JSON.stringify(range));
             return [
                 { title: "Add \'" + word + "\' to dictionary", command: "addToDictionary", arguments: [word] },
                 { title: "Ignore \'" + word + "\' in '" + vscode.window.activeTextEditor.document.languageId + "'", command: "addToIgnored", arguments: [word] }
@@ -263,6 +264,7 @@ function activate(context) {
                         var lineRange = new vscode.Range(linenumber, colnumber, linenumber, colnumber + words[i].length);
                         var diag = new vscode.Diagnostic(lineRange,"Suggested word/s: " + dict.spellSuggestionsSync(words[i]).toString(), vscode.DiagnosticSeverity.Error);
                         diagnostics.push(diag);
+                        console.log(JSON.stringify(diagnostics));
 
                         
 
