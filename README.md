@@ -8,36 +8,36 @@ It checks WORD by WORD and ignores all symbols and punctuation.
 Simple on/off switch 
 
 #### Example
-![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/master/images/switch.gif)
+![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/new/images/switch.gif)
 
 Simple suggestions
 
 #### Example
-![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/master/images/suggestions.gif)
+![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/new/images/suggestions.gif)
 
 
 Multi-Language Support
 
 #### Example
-![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/master/images/multilangsupport.gif)
+![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/new/images/multilangsupport.gif)
 
 
 Camel-case Support => "smallRectangle" is treated as "small Rectangle"
 
 #### Example
-![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/master/images/camelcase.gif)
+![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/new/images/camelcase.gif)
 
 
 Adding word to Language Mode (typescript,javascript,c++,...) so language specified keywords are not marked as wrong spelled words 
 
 #### Example
-![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/master/images/addwordlang.gif)
+![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/new/images/addwordlang.gif)
 
 
 Adding word to current dictionary
 
 #### Example
-![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/master/images/addworddictionary.gif)
+![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/new/images/addworddictionary.gif)
 
 
 ## Supported Languages
