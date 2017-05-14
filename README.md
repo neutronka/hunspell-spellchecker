@@ -64,7 +64,8 @@ C:\Users\<YOURNAME>\.vscode\extensions\denisgerguri.hunspell-spellchecker\langua
 Then open a settings.json file:
 C:\Users\<YOURNAME>\.vscode\extensions\denisgerguri.hunspell-spellchecker\settings\settings.json and insert new language.
 
-
+#### How-to
+![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/new/images/addworddictionary.gif)
 
 ### Manually editing document type ignored words
 

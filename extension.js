@@ -122,9 +122,7 @@ function activate(context) {
         if (DEBUG) {
             console.log("Adding word: " + word + " to dictionary");
         }
-        console.log("test");
         dict.addWordSync(word);
-        console.log("test1");
         // Spellcheck again using updated dict
         spellCheck();
     }
