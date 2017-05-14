@@ -59,9 +59,10 @@ function activate(context) {
         // this function is called whenever user click onto text that have diagnostic collection 
         provideCodeActions: function (document, range, context, token) {
             let word = document.getText(range);
+            console.log(JSON.stringify(str));
             return [
-                { title: "Add '" + word + "' to dictionary", command: "addToDictionary", arguments: [word] },
-                { title: "Ignore '" + word + "' in '" + vscode.window.activeTextEditor.document.languageId + "'", command: "addToIgnored", arguments: [word] }
+                { title: "Add \'" + word + "\' to dictionary", command: "addToDictionary", arguments: [word] },
+                { title: "Ignore \'" + word + "\' in '" + vscode.window.activeTextEditor.document.languageId + "'", command: "addToIgnored", arguments: [word] }
             ];
         }
 
