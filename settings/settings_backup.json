@@ -1,0 +1,16 @@
+{
+  "languages": [
+    {
+      "id":"ENG",
+      "name":"English",
+      "aff_file":"en_US.aff",
+      "dic_file":"en_US.dic"
+    }, 
+    {
+      "id":"ESP",
+      "name":"Spanish",
+      "aff_file":"en_US.aff",
+      "dic_file":"en_US.dic"
+    }
+    ]
+}

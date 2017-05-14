@@ -1,0 +1,22 @@
+{
+  "languages": [
+    {
+      "id":"ENG",
+      "name":"English",
+      "aff_file":"en_US.aff",
+      "dic_file":"en_US.dic"
+    }, 
+    {
+      "id":"ESP",
+      "name":"Spanish",
+      "aff_file":"Spanish.aff",
+      "dic_file":"Spanish.dic"
+    },
+    {
+      "id":"CZE",
+      "name":"Czech",
+      "aff_file":"Czech.aff",
+      "dic_file":"Czech.dic"
+    } 
+    ]
+}
