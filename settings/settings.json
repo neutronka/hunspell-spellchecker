@@ -11,12 +11,6 @@
       "name":"Spanish",
       "aff_file":"Spanish.aff",
       "dic_file":"Spanish.dic"
-    },
-    {
-      "id":"CZE",
-      "name":"Czech",
-      "aff_file":"Czech.aff",
-      "dic_file":"Czech.dic"
     } 
     ]
 }

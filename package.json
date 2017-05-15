@@ -35,8 +35,7 @@
         "vscode": "^1.12.1"
     },
     "dependencies": {
-        "nodehun": "2.0.11",
-        "xregexp": "^3.2.0",
-        "electron-rebuild": "^1.5.11"
+        "nspell": "1.0.2",
+        "xregexp": "^3.2.0"        
     }
 }

@@ -10,7 +10,9 @@ function activate(context) {
     // to handle camelCase
     var xregexp = require('xregexp');
     //Nodehun library
-    var nodehun = require('nodehun');
+    var nspell = require('nspell');
+  
+ 
     //Path maker
     var path = require('path');
     //Filesystem 
@@ -25,13 +27,8 @@ function activate(context) {
     var DEBUG = false;
     //parse user specified settings or load default 
     var settings;
-    //
+    //  spellchek is invoked when user stops typing for 1sec
     var timeout;
-    //timestamp
-    var time = Date.now();
-    // Interval to do spellcheck when typing
-    const checkInterval = 1000; // 1sec 1000 milisec
-
     // language specified ignored words
     var ignoredWords = [];
     // array that hold record of used langid in session
@@ -113,8 +110,8 @@ function activate(context) {
     var affbuf = fs.readFileSync(path.join(context.extensionPath, "languages/" + settings.languages[0].aff_file));
     // Load slovniku
     var dictbuf = fs.readFileSync(path.join(context.extensionPath, "languages/" + settings.languages[0].dic_file));
-    var dict = new nodehun(affbuf, dictbuf);
-    
+    var dict = nspell(affbuf, dictbuf);
+
 
 
     // Funkce 
@@ -123,7 +120,7 @@ function activate(context) {
         if (DEBUG) {
             console.log("Adding word: " + word + " to dictionary");
         }
-        dict.addWordSync(word);
+        dict.add(word);
         // Spellcheck again using updated dict
         spellCheck();
     }
@@ -222,7 +219,7 @@ function activate(context) {
 
             // Split lines by new line to keep track of words position
             var lines = editedText.split('\n');
-            
+
             for (var i in words) {
              
                 
@@ -231,7 +228,7 @@ function activate(context) {
 
 
                     //If wrong
-                    if (!dict.isCorrectSync(words[i])) {
+                    if (!dict.correct(words[i]) && words[i].length > 0) {
 
                         // Find position of wrong spelled word
                         position = lines[linenumber].indexOf(words[i], lastposition);
@@ -245,9 +242,6 @@ function activate(context) {
                             if (linenumber < lines.length) {
                                 position = lines[linenumber].indexOf(words[i], lastposition);
                             }
-                            else {
-                                console.log("eror zacykleni");
-                            }
                         
                         }
                         // Next word in array must be after the previous word so we can set new start position from the old one
@@ -255,7 +249,7 @@ function activate(context) {
                         lastposition = position + words[i].length;
 
                         var lineRange = new vscode.Range(linenumber, colnumber, linenumber, colnumber + words[i].length);
-                        var diag = new vscode.Diagnostic(lineRange,"Suggested word/s: " + dict.spellSuggestionsSync(words[i]).toString(), vscode.DiagnosticSeverity.Error);
+                        var diag = new vscode.Diagnostic(lineRange,"Suggested word/s: " + dict.suggest(words[i]).toString(), vscode.DiagnosticSeverity.Error);
                         diagnostics.push(diag);
                         
                         
@@ -304,9 +298,10 @@ function activate(context) {
             currentLangIndex++;
         }
         // Load new language depending on currentLangIndex
+
         affbuf = fs.readFileSync(path.join(context.extensionPath, "languages/" + settings.languages[currentLangIndex].aff_file));
         dictbuf = fs.readFileSync(path.join(context.extensionPath, "languages/" + settings.languages[currentLangIndex].dic_file));
-        dict = new nodehun(affbuf, dictbuf);
+        dict = nspell(affbuf, dictbuf);
         // Update status bar text
         statusBarItemLanguage.text = "$(three-bars) " + settings.languages[currentLangIndex].id;
         //spellcheck after changing language
