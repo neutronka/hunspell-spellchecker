@@ -1,6 +1,6 @@
-#Multi-language spellchecker for source code and simple text
+#Multi-language simple spellchecker
 
-This spellchecker is based on hunspell library using npm module "nodehun". It supports Multi-Language via .dic and .aff files.
+This spellchecker is based on hunspell library using npm module "nspell". It supports Multi-Language via .dic and .aff files.
 It checks WORD by WORD and ignores all symbols and punctuation.
 
 ## Features
@@ -46,16 +46,12 @@ Pre-installed:
 
 * English (default) 
 * Spanish
-* Czech
-
-
-
 
 ## Extension Settings
 
 ### Adding new language
 
-Additional dictionaries can be downloaded here https://github.com/titoBouzout/Dictionaries, but you can use any ".dic" and ".aff" files based dictionary downloaded somewhere else.
+Additional dictionaries can be downloaded here https://github.com/titoBouzout/Dictionaries, https://github.com/wooorm/dictionaries but you can use any ".dic" and ".aff" files based dictionary downloaded somewhere else.
 Download both <YOUR_LANG>.dic and <YOUR_LANG>.aff files and place them into:
 
 C:\Users\<YOURNAME>\.vscode\extensions\denisgerguri.hunspell-spellchecker\languages\
@@ -67,7 +63,7 @@ C:\Users\<YOURNAME>\.vscode\extensions\denisgerguri.hunspell-spellchecker\settin
 #### How-to
 ![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/new/images/addnewlang.gif)
 
-### Manually editing document type ignored words
+### Manually editing document type ignored words (C++,Javascript,LaTEX)
 
 For each document type a text file is created in 
 
@@ -75,6 +71,66 @@ C:\Users\<YOURNAME>\.vscode\extensions\denisgerguri.hunspell-spellchecker\settin
 
 If there is no document created for type that you need just open a new document of that type in VS Code and it is going to be automatically created.
 All you have to do is write all the words that you want to ignore in here. One word per line.
+
+#### Example
+Javascript ignored words
+
+break
+case
+catch
+continue 
+default 
+delete 
+do 
+else
+finally 
+for 
+function 
+if 
+in 
+instanceof 
+new
+return
+switch
+this
+throw
+try
+typeof
+var
+void
+while
+with
+abstract
+boolean
+byte 
+char 
+class 
+const 
+debugger 
+double 
+enum
+export 
+extends 
+final 
+float 
+goto 
+int
+interface
+implements
+import
+long
+native
+package
+private
+protected
+public
+short
+static
+super
+synchronized
+throws
+transient
+volatile
 
 
 ## Release Notes

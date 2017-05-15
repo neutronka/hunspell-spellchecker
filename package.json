@@ -2,7 +2,7 @@
     "name": "hunspell-spellchecker",
     "displayName": "Spellchecker for source code and text",
     "description": "Offline Spellchecker",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "author": "Denis Gerguri",
     "licence": "MIT",
     "icon": "images/spellchecker.png",
@@ -36,6 +36,6 @@
     },
     "dependencies": {
         "nspell": "1.0.2",
-        "xregexp": "^3.2.0"        
+        "xregexp": "^3.2.0"
     }
 }
