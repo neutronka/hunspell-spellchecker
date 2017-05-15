@@ -8,7 +8,7 @@
     "icon": "images/spellchecker.png",
     "publisher": "denisgerguri",
     "engines": {
-        "vscode": "^1.5.0"
+        "vscode": "^1.12.1"
     },
     "categories": [
         "Other",

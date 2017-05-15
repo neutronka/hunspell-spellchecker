@@ -59,14 +59,13 @@ function activate(context) {
         // this function is called whenever user click onto text that have diagnostic collection 
         provideCodeActions: function (document, range, context, token) {
             let word = document.getText(range);
-            console.log(JSON.stringify(word));
-            console.log(JSON.stringify(range));
-            return [
-                { title: "Add \'" + word + "\' to dictionary", command: "addToDictionary", arguments: [word] },
-                { title: "Ignore \'" + word + "\' in '" + vscode.window.activeTextEditor.document.languageId + "'", command: "addToIgnored", arguments: [word] }
-            ];
+            if (context.diagnostics[0] != undefined){
+                return [
+                    { title: "Add '" + word + "' to dictionary", command: "addToDictionary", arguments: [word] },
+                    { title: "Ignore '" + word + "' in '" + vscode.window.activeTextEditor.document.languageId + "'", command: "addToIgnored", arguments: [word] }
+                ];
+            }
         }
-
     };
 
     // Action provider - lightbulb
@@ -200,7 +199,7 @@ function activate(context) {
 
             var editedText = origText;
             //most non number,letter chars for space
-            origText = origText.replace(/[©—’'“”`\"!#$%&()*+,.\/:;<=>?@\[\]\\^_{|}\n\r\-~]/g, ' ');
+            origText = origText.replace(/[¿¡©—’'“”`\"!#$%&()*+,.\/:;<=>?@\[\]\\^_{|}\n\r\-~]/g, ' ');
             // convert tabs to spaces
             origText = origText.replace(/\t/g, ' ');
 
@@ -226,9 +225,6 @@ function activate(context) {
             
             for (var i in words) {
              
-
-                
-                //TODO DONT CHECK LANG SPECIFIC WORDS
                 
                 // If word is not in ignored words, converted to lowercase Ahoj,ahoj equals ahoj in ignoredwords
                 if (ignoredWords.indexOf(words[i].toLocaleLowerCase()) == -1) {
@@ -257,15 +253,11 @@ function activate(context) {
                         // Next word in array must be after the previous word so we can set new start position from the old one
                         colnumber = position;
                         lastposition = position + words[i].length;
-                        
-                        //console.log(linenumber, colnumber, linenumber, colnumber + words[i].length);
-                        
 
                         var lineRange = new vscode.Range(linenumber, colnumber, linenumber, colnumber + words[i].length);
                         var diag = new vscode.Diagnostic(lineRange,"Suggested word/s: " + dict.spellSuggestionsSync(words[i]).toString(), vscode.DiagnosticSeverity.Error);
                         diagnostics.push(diag);
-                        console.log(JSON.stringify(diagnostics));
-
+                        
                         
 
                     }
