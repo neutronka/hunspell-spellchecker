@@ -1,30 +1,25 @@
-#Multi-language simple spellchecker
+# Multi-language simple spellchecker
 
-This spellchecker is based on hunspell library using npm module "nspell". It supports Multi-Language via .dic and .aff files.
+This spellchecker is based on hunspell core rewritten library using npm module "nspell". It supports Multi-Language via .dic and .aff files.
 It checks WORD by WORD and ignores all symbols and punctuation.
 
 ## Features
 
-Simple on/off switch 
 
-#### Example
+#### Simple on/off switch 
 ![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/new/images/switch.gif)
 
-Simple suggestions
 
-#### Example
+#### Simple suggestions
 ![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/new/images/suggestions.gif)
 
 
-Multi-Language Support
-
-#### Example
+#### Multi-Language Support
 ![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/new/images/multilangsupport.gif)
 
 
-Camel-case Support => "smallRectangle" is treated as "small Rectangle"
-
-#### Example
+#### Camel-case Support
+=> "smallRectangle" is treated as "small Rectangle"
 ![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/new/images/camelcase.gif)
 
 
@@ -34,9 +29,7 @@ Adding word to Language Mode (typescript,javascript,c++,...) so language specifi
 ![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/new/images/addwordlang.gif)
 
 
-Adding word to current dictionary
-
-#### Example
+#### Adding word to current dictionary
 ![Example](https://raw.githubusercontent.com/neutronka/hunspell-spellchecker/new/images/addworddictionary.gif)
 
 

@@ -6,10 +6,9 @@ let vscode = require('vscode');
 // your extension is activated the very first time the command is executed
 function activate(context) {
 
-
     // to handle camelCase
     var xregexp = require('xregexp');
-    //Nodehun library
+    //Nspell
     var nspell = require('nspell');
   
  
@@ -27,11 +26,11 @@ function activate(context) {
     var DEBUG = false;
     //parse user specified settings or load default 
     var settings;
-    //  spellchek is invoked when user stops typing for 1sec
+    //  spellcheck is invoked when user stops typing for 1 sec
     var timeout;
     // language specified ignored words
     var ignoredWords = [];
-    // array that hold record of used langid in session
+    // array that hold record of used language_id in session 
     var fixProviderLanguageIds = [];
 
     var diagnosticCollection = vscode.languages.createDiagnosticCollection('SpellingErrors');
@@ -50,7 +49,7 @@ function activate(context) {
     vscode.commands.registerCommand("addToIgnored", addToIgnored.bind(this));
     
 
-    //register actionsprovider -- lightbulb
+    //register actions provider -- light bulb
 
     const fixProvider = {
         // this function is called whenever user click onto text that have diagnostic collection 
@@ -65,7 +64,7 @@ function activate(context) {
         }
     };
 
-    // Action provider - lightbulb
+    // Action provider - light bulb
     var fixer;
     context.subscriptions.push(fixer);
     // Register code action provider
@@ -114,7 +113,7 @@ function activate(context) {
 
 
 
-    // Funkce 
+    // Functions 
     // Add wrong spelled word to dictionary
     function addToDictionary(word) {
         if (DEBUG) {
@@ -124,7 +123,7 @@ function activate(context) {
         // Spellcheck again using updated dict
         spellCheck();
     }
-    // Add wrong spelled word to lang specified ignored list "plaintext,javascript etc."
+    // Add wrong spelled word to language specified ignored list "plaintext,javascript etc."
     function addToIgnored(word) {
         if (DEBUG) {
             console.log("Adding word: " + word + " to lang. ignored list");
@@ -153,13 +152,13 @@ function activate(context) {
             fixProviderLanguageIds.push(vscode.window.activeTextEditor.document.languageId);
         }
 
-        // Load language specified words to array based on current languageid
+        // Load language specified words to array based on current language_id
         try {
             ignoredWords = fs.readFileSync(path.join(context.extensionPath, './settings/' + vscode.window.activeTextEditor.document.languageId + '.txt')).toString().replace(/\r\n/g, '\n').split("\n");
         }
         catch (error) {
             console.log("Unable to load " + vscode.window.activeTextEditor.document.languageId + " ignored words file. Creating new empty file");
-            //vscode.window.showInformationMessage("Spellchecker: Unable to load languageid ignored words file. Loading default file from /settings/default");
+            //vscode.window.showInformationMessage("Spellchecker: Unable to load language_id ignored words file. Loading default file from /settings/default");
             //ignoredWords = fs.readFileSync(path.join(context.extensionPath, './settings/default.txt')).toString().replace(/\r\n/g,'\n').split("\n"); 
             //console.log(error);
 
@@ -178,7 +177,7 @@ function activate(context) {
     function timedSpellCheck(){
         
         clearTimeout(timeout);
-        timeout = setTimeout(spellCheck, 1000);
+        timeout = setTimeout(spellCheck, 1000); 
     }
     function spellCheck() {
 
@@ -195,10 +194,14 @@ function activate(context) {
             origText = origText.replace(/\r?\n/g, '\n');
 
             var editedText = origText;
-            //most non number,letter chars for space
-            origText = origText.replace(/[¿¡©—’'“”`\"!#$%&()*+,.\/:;<=>?@\[\]\\^_{|}\n\r\-~]/g, ' ');
+            // latex
+            origText = origText.replace(/\\\w*\{.*?\}/g, ' ');
             // convert tabs to spaces
             origText = origText.replace(/\t/g, ' ');
+            origText = origText.replace(/ [0-9]+/g, ' ');
+            //most non number,letter chars for space
+            origText = origText.replace(/[¿¡©—’'“”`\"!#$%&()*+,.\/:;<=>?@\[\]\\^_{|}\n\r\-~]/g, ' ');
+
 
             // split camelCase -> camel Case with xregexp handles unicode YEAH FINALY 
             var camelCase = xregexp('(\\p{Ll})(\\p{Lu})');
@@ -206,11 +209,11 @@ function activate(context) {
             //only ascii
             //origText = origText.replace(/([a-z])([A-Z])/g, '$1 $2');
 
-            var lastposition = 0;
+            var lastPosition = 0;
             var position = 0;
-            var linenumber = 0;
-            var colnumber = 0;
-            // Split to array seperated by spaces
+            var lineNumber = 0;
+            var colNumber = 0;
+            // Split to array separated by spaces
             var words = origText.split(' ');
 
             // Filter array with filterArray function remove '\n'
@@ -223,7 +226,7 @@ function activate(context) {
             for (var i in words) {
              
                 
-                // If word is not in ignored words, converted to lowercase Ahoj,ahoj equals ahoj in ignoredwords
+                // If word is not in ignored words, converted to lowercase Ahoj,ahoj equals ahoj in ignoredWords
                 if (ignoredWords.indexOf(words[i].toLocaleLowerCase()) == -1) {
 
 
@@ -231,24 +234,24 @@ function activate(context) {
                     if (!dict.correct(words[i]) && words[i].length > 0) {
 
                         // Find position of wrong spelled word
-                        position = lines[linenumber].indexOf(words[i], lastposition);
+                        position = lines[lineNumber].indexOf(words[i], lastPosition);
                         // If not found on first line
                         while (position < 0) {
-                            //Reset lastposition and search next line
-                            lastposition = 0;
-                            linenumber++;
+                            //Reset lastPosition and search next line
+                            lastPosition = 0;
+                            lineNumber++;
 
                             // When found 
-                            if (linenumber < lines.length) {
-                                position = lines[linenumber].indexOf(words[i], lastposition);
+                            if (lineNumber < lines.length) {
+                                position = lines[lineNumber].indexOf(words[i], lastPosition);
                             }
                         
                         }
                         // Next word in array must be after the previous word so we can set new start position from the old one
-                        colnumber = position;
-                        lastposition = position + words[i].length;
+                        colNumber = position;
+                        lastPosition = position + words[i].length;
 
-                        var lineRange = new vscode.Range(linenumber, colnumber, linenumber, colnumber + words[i].length);
+                        var lineRange = new vscode.Range(lineNumber, colNumber, lineNumber, colNumber + words[i].length);
                         var diag = new vscode.Diagnostic(lineRange,"Suggested word/s: " + dict.suggest(words[i]).toString(), vscode.DiagnosticSeverity.Error);
                         diagnostics.push(diag);
                         
